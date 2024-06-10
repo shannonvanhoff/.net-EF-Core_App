@@ -6,6 +6,7 @@ using Webapi.Services.Services.Helperservice;
 using Webapi.Services.Services.HTaskservice;
 using AppContext = Webapi.Data.Migrations.AppContext;
 using AutoMapper;
+
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -24,7 +25,17 @@ builder.Services.AddScoped<IHTaskService, HTaskService>();
 builder.Services.AddScoped<IHelperService, HelperService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 
-builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddCors(Option =>
+    {
+        Option.AddPolicy("MyPolicy", builder =>
+        {
+            builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyHeader();
+        });
+});
+
 
 var app = builder.Build();
 
@@ -36,7 +47,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("MyPolicy");
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 //app.UseEndpoints(endpoints =>
 //{

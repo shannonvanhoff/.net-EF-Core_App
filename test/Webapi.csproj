@@ -7,18 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="HelpDeskApp\**" />
     <Compile Remove="NewFolder1\**" />
     <Compile Remove="NewFolder2\**" />
     <Compile Remove="NewFolder3\**" />
     <Compile Remove="NewFolder4\**" />
+    <Content Remove="HelpDeskApp\**" />
     <Content Remove="NewFolder1\**" />
     <Content Remove="NewFolder2\**" />
     <Content Remove="NewFolder3\**" />
     <Content Remove="NewFolder4\**" />
+    <EmbeddedResource Remove="HelpDeskApp\**" />
     <EmbeddedResource Remove="NewFolder1\**" />
     <EmbeddedResource Remove="NewFolder2\**" />
     <EmbeddedResource Remove="NewFolder3\**" />
     <EmbeddedResource Remove="NewFolder4\**" />
+    <None Remove="HelpDeskApp\**" />
     <None Remove="NewFolder1\**" />
     <None Remove="NewFolder2\**" />
     <None Remove="NewFolder3\**" />
@@ -26,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -39,10 +43,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Webapi.Data\Webapi.Data.csproj" />
     <ProjectReference Include="..\Webapi.Services\Webapi.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="HelpDeskApp\" />
   </ItemGroup>
 
 </Project>
